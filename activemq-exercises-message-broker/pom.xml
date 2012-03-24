@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>exercise-rewrite</artifactId>
+        <groupId>exercise-rewrite</groupId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>activemq-exercises-message-broker</artifactId>
+    <packaging>jar</packaging>
+
+    <name>ActiveMQ Exercises :: Common Message Broker</name>
+
+    <profiles>
+        <profile>
+            <id>broker</id>
+            <build>
+                <defaultGoal>package</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.activemq.tooling</groupId>
+                        <artifactId>maven-activemq-plugin</artifactId>
+                        <version>${activemq.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <configUri>xbean:file:./target/classes/conf/activemq-exercises.xml</configUri>
+                            <fork>false</fork>
+                            <systemProperties>
+                                <property>
+                                    <name>org.apache.activemq.default.directory.prefix</name>
+                                    <value>./target</value>
+                                </property>
+                            </systemProperties>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+</project>

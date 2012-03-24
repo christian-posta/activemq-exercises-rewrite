@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>exercise-rewrite</groupId>
+    <artifactId>exercise-rewrite</artifactId>
+    <version>1.0</version>
+
+    <modules>
+        <module>activemq-exercises-message-broker</module>
+        <module>activemq-exercises-simple-queue</module>
+        <module>activemq-exercises-simple-topic</module>
+        <module>activemq-exercises-durable-chat</module>
+        <module>activemq-exercises-failover</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>ActiveMQ Exercises</name>
+    <properties>
+        <activemq.version>5.4.2-fuse-00-00</activemq.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>fusesource</id>
+            <name>FuseSource Release Repository</name>
+            <url>http://repo.fusesource.com/maven2/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>fusesource</id>
+            <name>FuseSource Release Repository</name>
+            <url>http://repo.fusesource.com/maven2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
