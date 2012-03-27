@@ -8,7 +8,9 @@
         <groupId>exercise-rewrite</groupId>
         <version>1.0</version>
     </parent>
-    <artifactId>activemq-exercises-transacted-chat</artifactId>
+
+    <artifactId>activemq-exercises-hierarchical-chat</artifactId>
+    <name>ActiveMQ Exercises :: Hierarchical Chat</name>
 
     <profiles>
         <profile>
@@ -33,8 +35,13 @@
                                     <rules>
                                         <requireProperty>
                                             <!--requires a chatName, which will be set at the command line-->
-                                            <property>chatName</property>
-                                            <message>You must define a chatName (e.g., -DchatName=Chatter-One)</message>
+                                            <property>type</property>
+                                            <message>You must define a type (e.g., -Dtype=world)</message>
+                                        </requireProperty>
+                                        <requireProperty>
+                                            <!--requires a chatName, which will be set at the command line-->
+                                            <property>ptype</property>
+                                            <message>You must define a ptype (e.g., -Dptype=".*")</message>
                                         </requireProperty>
                                     </rules>
                                     <fail>true</fail>
@@ -52,12 +59,16 @@
                                     <goal>java</goal>
                                 </goals>
                                 <configuration>
-                                    <mainClass>com.fusesource.activemq.exercises.transactedchat.TransactedChat</mainClass>
+                                    <mainClass>com.fusesource.activemq.exercises.hierarchicalchat.HierarchicalChat</mainClass>
                                     <systemProperties>
                                         <systemProperty>
                                             <!--System property name: ChatName-->
                                             <key>ChatName</key>
-                                            <value>${chatName}</value>
+                                            <value>${type}</value>
+                                        </systemProperty>
+                                        <systemProperty>
+                                            <key>PolicyType</key>
+                                            <value>${ptype}</value>
                                         </systemProperty>
                                     </systemProperties>
                                 </configuration>
@@ -68,6 +79,5 @@
             </build>
         </profile>
     </profiles>
-
 
 </project>

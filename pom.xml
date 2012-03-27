@@ -15,6 +15,8 @@
         <module>activemq-exercises-durable-chat</module>
         <module>activemq-exercises-failover</module>
         <module>activemq-exercises-transacted-chat</module>
+        <module>activemq-exercises-hierarchical-chat</module>
+        <module>activemq-exercises-unordered-multiple-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
