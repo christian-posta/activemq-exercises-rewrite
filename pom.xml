@@ -17,6 +17,7 @@
         <module>activemq-exercises-transacted-chat</module>
         <module>activemq-exercises-hierarchical-chat</module>
         <module>activemq-exercises-unordered-multiple-consumer</module>
+        <module>activemq-exercises-exclusive-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
