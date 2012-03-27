@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>exercise-rewrite</artifactId>
+        <groupId>exercise-rewrite</groupId>
+        <version>1.0</version>
+    </parent>
+    <artifactId>activemq-exercises-transacted-chat</artifactId>
+    <profiles>
+                <profile>
+            <id>chatter</id>
+            <build>
+                <defaultGoal>package</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <!--The Enforcer plugin provides goals to control certain environmental constraints such as
+                        Maven version, JDK version and OS family along with many more standard rules and user created
+                        rules.-->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforcer-property</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireProperty>
+                                            <!--requires a chatName, which will be set at the command line-->
+                                            <property>chatName</property>
+                                            <message>You must define a chatName (e.g., -DchatName=Chatter-One)</message>
+                                        </requireProperty>
+                                    </rules>
+                                    <fail>true</fail>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                                <configuration>
+                                    <mainClass>com.fusesource.activemq.exercises.transactedchat.TransactedChat</mainClass>
+                                    <systemProperties>
+                                        <systemProperty>
+                                            <!--System property name: ChatName-->
+                                            <key>ChatName</key>
+                                            <value>${chatName}</value>
+                                        </systemProperty>
+                                    </systemProperties>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+</project>

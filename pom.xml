@@ -14,12 +14,13 @@
         <module>activemq-exercises-simple-topic</module>
         <module>activemq-exercises-durable-chat</module>
         <module>activemq-exercises-failover</module>
+        <module>activemq-exercises-transacted-chat</module>
     </modules>
     <packaging>pom</packaging>
 
     <name>ActiveMQ Exercises</name>
     <properties>
-        <activemq.version>5.4.2-fuse-00-00</activemq.version>
+        <activemq.version>5.4.2-fuse-02-00</activemq.version>
     </properties>
 
     <repositories>
