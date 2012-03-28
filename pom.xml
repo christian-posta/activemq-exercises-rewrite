@@ -20,6 +20,7 @@
         <module>activemq-exercises-exclusive-consumer</module>
         <module>activemq-exercises-prioritized-exclusive-consumer</module>
         <module>activemq-exercises-message-groups</module>
+        <module>activemq-exercises-virtual-destination</module>
     </modules>
     <packaging>pom</packaging>
 
